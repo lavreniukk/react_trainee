@@ -5,9 +5,9 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Navbar dark color='primary' className=''>
+      <Navbar dark color='primary'>
         <div className='container'>
-          <NavbarBrand className='float-left' href="/">
+          <NavbarBrand className='float-start' href="/">
             Ristorante Con Fusion
           </NavbarBrand>
         </div>
