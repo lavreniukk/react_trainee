@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "bootstrap": "^4.0.0"
-  },
-  "devDependencies": {
-    "react-popper": "^2.3.0",
-    "reactstrap": "^9.1.5"
-  }
-}
