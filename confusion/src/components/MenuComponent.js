@@ -34,6 +34,27 @@ class Menu extends Component {
             );
         }
     }
+    // renderFullDish(dish) {
+    //     if (dish != null) {
+    //         return(
+    //             <CardBody>
+    //                 <CardTitle> {dish.name} </CardTitle>
+    //                 <CardText>
+    //                     {dish.description}
+    //                 </CardText>
+    //             </CardBody>
+    //         );
+    //     }
+    // }
+    // renderPartDish(dish) {
+    //     if (dish != null) {
+    //         return(
+    //             <CardImgOverlay>
+    //                 <CardTitle> {dish.name} </CardTitle>
+    //             </CardImgOverlay>
+    //         );
+    //     }
+    // }
     render () {
         const menu = this.props.dishes.map((dish) => {
             return (
@@ -41,7 +62,7 @@ class Menu extends Component {
                 <Card onClick={() => this.OnDishSelect(dish)}>
                     <CardImg width="100%" src={dish.image} alt={dish.name}/>
                     <CardImgOverlay>
-                        <CardTitle> {dish.name} </CardTitle>
+                         <CardTitle> {dish.name} </CardTitle>
                     </CardImgOverlay>
                 </Card>
               </div>
