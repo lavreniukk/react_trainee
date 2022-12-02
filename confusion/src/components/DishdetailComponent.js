@@ -1,79 +1,73 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle} from 'reactstrap';
 
-class DishDetail extends Component {
-    constructor(props) {
-        super(props);
+function RenderDish({selectedDish}) {
+    if (selectedDish != null) {
+        return(
+            <Card>
+                <CardImg object src={selectedDish.image} alt={selectedDish.name}/>
+                <CardBody>
+                    <CardTitle tag="h4"> {selectedDish.name} </CardTitle>
+                    <CardText>
+                        {selectedDish.description}
+                    </CardText>
+                </CardBody>
+            </Card> 
+        );
     }
-    
-    renderDish(selectedDish) {
-        if (selectedDish != null) {
+    else {
+        return(
+            <div></div>
+        );
+    }
+}
+
+function RenderComments({commentsArr}) {
+    if (commentsArr != null) {
+        var comms = commentsArr.map((comm) => {
             return(
-                <Card>
-                    <CardImg object src={selectedDish.image} alt={selectedDish.name}/>
-                    <CardBody>
-                        <CardTitle tag="h4"> {selectedDish.name} </CardTitle>
-                        <CardText>
-                            {selectedDish.description}
-                        </CardText>
-                    </CardBody>
-                </Card> 
+                <li key={comm.id}>
+                    <p> {comm.comment} </p>
+                    <p> -- {comm.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day:'2-digit'}).format(new Date(Date.parse(comm.date)))}</p>
+                </li>
             );
-        }
-        else {
-            return(
-                <div></div>
-            );
-        }
+        });
+
+        return (
+            <div>
+                <h4> Comments </h4>
+                <ul class="list-unstyled">
+                    {comms}
+                </ul>
+            </div>
+        );
     }
-
-    renderComments(commentsArr) {
-        if (commentsArr != null) {
-            var comms = commentsArr.map((comm) => {
-                return(
-                    <li key={comm.id}>
-                        <p> {comm.comment} </p>
-                        <p> -- {comm.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day:'2-digit'}).format(new Date(Date.parse(comm.date)))}</p>
-                    </li>
-                );
-            });
-
-            return (
-                <div>
-                    <h4> Comments </h4>
-                    <ul class="list-unstyled">
-                        {comms}
-                    </ul>
-                </div>
-            );
-        }
-        else {
-            return (
-                <div></div>
-            );
-        }
+    else {
+        return (
+            <div></div>
+        );
     }
+}
 
-    render() {
-        if (this.props.dish != null) {
-            return (
-                <div className='container'>
-                    <div className='row'>
-                        <div className='col-12 col-md-5 m-1'>
-                            {this.renderDish(this.props.dish)}
-                        </div>
-                        <div className='col-12 col-md-5 m-1'>
-                            {this.renderComments(this.props.dish.comments)}
-                        </div>
+function DishDetail(props) {
+    if (props.dish != null) {
+        return (
+            <div className='container'>
+                <div className='row'>
+                    <div className='col-12 col-md-5 m-1'>
+                        <RenderDish dish={props.dish}/>
+                    </div>
+                    <div className='col-12 col-md-5 m-1'>
+                        <RenderComments dish={props.dish.comments}/>
                     </div>
                 </div>
-        ); 
-        }
-        else {
-            return (
-                <div></div>
-            );
-        }
+            </div>
+        );
+    }
+    else {
+        return (
+            <div></div>
+        );
     }
 }
 
