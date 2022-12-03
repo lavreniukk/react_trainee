@@ -1,3 +1,6 @@
+.navbar {
+    padding: 15px 0px 15px 50px!important;
+}
 .row-header{
     margin:0px auto;
     padding:0px auto;
@@ -10,14 +13,19 @@
     min-height:400px;
 }
 
+.card-img-overlay {
+    background-image: linear-gradient(rgba(231,222,242,1) 0%, rgba(231,222,242,0.1) 25%, rgba(0,0,0,0) 100%);
+}
+
 .footer{
     background-color: #D1C4E9;
-    margin:20px auto 0px auto;
+    margin:45px auto 0px auto;
     padding: 20px 0px 20px 0px;
 }
 .jumbotron {
-    padding:70px 70px 70px 70px;
+    padding:50px 70px 50px 70px;
     margin:0px auto;
+    margin-bottom: 45px;
     background: #9575CD ;
     color:floralwhite;
 }

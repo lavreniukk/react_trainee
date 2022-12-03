@@ -1,10 +1,11 @@
-import Menu from './MenuComponent';
-import {Navbar, NavbarBrand} from 'reactstrap';
 import { Component } from 'react';
 import { DISHES } from '../shared/dishes';
 import DishDetail from './DishdetailComponent';
+import Menu from './MenuComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
+import Home from './HomeComponent';
+import {Routes, Route, Navigate} from 'react-router-dom';
 
 class Main extends Component {
     constructor(props) {
@@ -12,25 +13,28 @@ class Main extends Component {
 
         this.state = {
             dishes: DISHES,
-            seelctedDish: null
         };
     }
     
-    OnDishSelect(dishId) {
-        this.setState({selectedDish: dishId});
-    };
-
     render() {
+      const HomePage = () => {
+        return(
+          <Home/>
+        );
+      }
+
       return (
         <div className="App">
           <Header/>
-          <Menu dishes={this.state.dishes} onClick={(dishId) => this.OnDishSelect(dishId)}/>
-          <DishDetail dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]} />
+          <Routes>
+            <Route path="/home" element={<HomePage/>}/>
+            <Route exact path="/menu" element={<Menu dishes={this.state.dishes}/>}/>
+            <Route path="*" element={<Navigate to="/home" replace/>}/>
+          </Routes>
           <Footer/>
         </div>
     );
   }
 }
-  
 
 export default Main;

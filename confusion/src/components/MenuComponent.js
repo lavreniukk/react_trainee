@@ -10,14 +10,14 @@ function RenderMenuItem({dish, onClick}) {
             <CardImgOverlay>
                 <CardTitle tag="h4"> {dish.name} </CardTitle>
             </CardImgOverlay>
-        </  Card>
+        </Card>
     );
 }
 
 function Menu(props) {
     const menu = props.dishes.map((dish) => {
         return (
-            <div key={dish.id} className="col-12 col-md-5 m-1">
+            <div key={dish.id} className="col-12 col-md-5 m-1 p-0">
                 <RenderMenuItem dish={dish} onClick={props.onClick}/>
             </div>
         );

@@ -54,7 +54,7 @@ function DishDetail(props) {
         return (
             <div className='container'>
                 <div className='row d-flex justify-content-center'>
-                    <div className='col-12 col-md-5 m-1'>
+                    <div className='col-12 col-md-5 m-1 p-0'>
                         <RenderDish selectedDish={props.dish}/>
                     </div>
                     <div className='col-12 col-md-5 m-1'>
