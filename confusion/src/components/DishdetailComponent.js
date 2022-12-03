@@ -53,12 +53,12 @@ function DishDetail(props) {
     if (props.dish != null) {
         return (
             <div className='container'>
-                <div className='row'>
+                <div className='row d-flex justify-content-center'>
                     <div className='col-12 col-md-5 m-1'>
-                        <RenderDish dish={props.dish}/>
+                        <RenderDish selectedDish={props.dish}/>
                     </div>
                     <div className='col-12 col-md-5 m-1'>
-                        <RenderComments dish={props.dish.comments}/>
+                        <RenderComments commentsArr={props.dish.comments}/>
                     </div>
                 </div>
             </div>
