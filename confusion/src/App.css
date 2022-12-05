@@ -1,6 +1,14 @@
-.navbar {
-    padding: 15px 0px 15px 50px!important;
+@media (min-width: 768px){ 
+    .navbar-expand-md .navbar-collapse {
+        display: inline-flex!important;
+        flex-basis: auto;
+    }
 }
+
+.card a {
+    color: black;
+}
+
 .row-header{
     margin:0px auto;
     padding:0px auto;
