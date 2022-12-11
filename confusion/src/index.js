@@ -5,8 +5,8 @@ import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap-social/bootstrap-social.css';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
 import './index.css';
+import './App.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

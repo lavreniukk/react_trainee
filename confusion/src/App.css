@@ -3,6 +3,12 @@
         display: inline-flex!important;
         flex-basis: auto;
     }
+    
+}
+@media (max-width: 768px) {
+    .opened-margin {
+        margin-left: 50px;
+    }
 }
 
 .card a {
@@ -46,4 +52,16 @@ address{
 
 .navbar-dark {
     background-color: #512DA8;
+}
+
+#toggleLogin {
+    color: #9575CD;
+    border-color: #9575CD;
+    background-color: transparent;
+}
+
+#toggleLogin:hover {
+    color: #fff;
+    border-color: #fff;
+    background-color: transparent;
 }

@@ -131,7 +131,7 @@ class Contact extends Component {
                                     <Input type="text" id="firstname" name="firstname"
                                     placeholder='First Name' value={this.state.firstname}
                                     onChange={this.handleInputChange}
-                                    valid={errors.firstname === ''}
+                                    valid={errors.firstname === '' && this.state.touched.firstname === true}
                                     invalid={errors.firstname !== ''}
                                     onBlur={this.handleBlur('firstname')}/>
 
@@ -144,7 +144,7 @@ class Contact extends Component {
                                 <Col md={10}>
                                     <Input type="text" id="lastname" name="lastname"
                                     placeholder='Last Name' value={this.state.lastname}
-                                    valid={errors.lastname === ''}
+                                    valid={errors.lastname === '' && this.state.touched.lastname === true}
                                     invalid={errors.lastname !== ''}
                                     onChange={this.handleInputChange}
                                     onBlur={this.handleBlur('lastname')}/>
@@ -158,7 +158,7 @@ class Contact extends Component {
                                 <Col md={10}>
                                     <Input type="tel" id="telnum" name="telnum"
                                     placeholder='Tel. Number' value={this.state.telnum}
-                                    valid={errors.telnum === ''}
+                                    valid={errors.telnum === '' && this.state.touched.telnum === true}
                                     invalid={errors.telnum !== ''}
                                     onChange={this.handleInputChange}
                                     onBlur={this.handleBlur('telnum')}/>
@@ -172,7 +172,7 @@ class Contact extends Component {
                                 <Col md={10}>
                                     <Input type="email" id="email" name="email"
                                     placeholder='Email' value={this.state.email}
-                                    valid={errors.email === ''}
+                                    valid={errors.email === '' && this.state.touched.email === true}
                                     invalid={errors.email !== ''}
                                     onChange={this.handleInputChange}
                                     onBlur={this.handleBlur('email')}/>

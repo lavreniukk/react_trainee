@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Col} from 'reactstrap';
+import {Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Modal, Button, ModalHeader, ModalBody, FormGroup, Form, Label, Input} from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
@@ -7,9 +7,12 @@ class Header extends Component {
         super(props);
 
         this.state = {
-            isNavOpen : false
+            isNavOpen : false,
+            isModalOpen: false
         };
         this.toggleNav = this.toggleNav.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
     }
 
     toggleNav() {
@@ -18,30 +21,48 @@ class Header extends Component {
         });
     }
 
+    toggleModal() {
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
+        });
+    }
+
+    handleLogin(event) {
+        this.toggleModal();
+        alert("Username: " + this.username.value + " Password: " + this.password.value +
+        " Remembder: " + this.remember.checked);
+        event.preventDefault();
+    }
+
     render() {
         return(
             <>
                 <Navbar dark expand="md">
-                    <div className='container'>
-                        <NavbarToggler onClick={this.toggleNav} />
-                        <NavbarBrand className="mr-auto" href="/"><img src='../assets/images/logo.png' height="30" width="41" alt='Ristorante Con Fusion' /></NavbarBrand>
-                        <Collapse isOpen={this.state.isNavOpen} navbar>
-                            <Nav navbar>
-                                <NavItem>
-                                    <NavLink className="nav-link"  to='/home'><span className="fa fa-home fa-lg"></span> Home</NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink className="nav-link" to='/aboutus'><span className="fa fa-info fa-lg"></span> About Us</NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink className="nav-link"  to='/menu'><span className="fa fa-list fa-lg"></span> Menu</NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink className="nav-link" to='/contactus'><span className="fa fa-address-card fa-lg"></span> Contact Us</NavLink>
-                                </NavItem>
-                            </Nav>
-                        </Collapse>
-                    </div>
+                    <NavbarBrand className='ms-5' href="/"><img src='../assets/images/logo.png' height="30" width="41" alt='Ristorante Con Fusion' /></NavbarBrand>
+                    <NavbarToggler className='me-5' onClick={this.toggleNav} />
+                    <Collapse className='opened-margin' isOpen={this.state.isNavOpen} navbar>
+                        <Nav className='me-auto' navbar>
+                            <NavItem>
+                                <NavLink className="nav-link"  to='/home'><span className="fa fa-home fa-lg"></span> Home</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink className="nav-link" to='/aboutus'><span className="fa fa-info fa-lg"></span> About Us</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink className="nav-link"  to='/menu'><span className="fa fa-list fa-lg"></span> Menu</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink className="nav-link" to='/contactus'><span className="fa fa-address-card fa-lg"></span> Contact Us</NavLink>
+                            </NavItem>
+                        </Nav>
+                        <Nav className='ms-auto me-5' navbar>
+                            <NavItem>
+                                <Button id='toggleLogin' outline onClick={this.toggleModal}>
+                                    <span className='fa fa-sign-in fa-lg'> Login </span>
+                                </Button>
+                            </NavItem>
+                        </Nav>
+                    </Collapse>
                 </Navbar>
                 <div className='jumbotron mb-3'>
                     <div className='row row-header py-5'>
@@ -53,6 +74,37 @@ class Header extends Component {
                         </div>
                     </div>
                 </div>
+                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                    <ModalHeader toggle={this.toggleModal}>
+                        Login
+                    </ModalHeader>
+                    <ModalBody>
+                        <Form onSubmit={this.handleLogin}>
+                            <FormGroup>
+                                <Label htmlFor="username">
+                                    Username
+                                </Label>
+                                <Input type='text' id='username' name='username'
+                                innerRef={(input) => this.username = input}/>
+                            </FormGroup>
+                            <FormGroup>
+                                <Label htmlFor="password">
+                                    Password
+                                </Label>
+                                <Input type='password' id='password' name='password'
+                                innerRef={(input) => this.password = input}/>
+                            </FormGroup>
+                            <FormGroup>
+                                <Label check>
+                                    <Input className='me-2' type='checkbox' name='remember'
+                                    innerRef={(input) => this.remember = input}/>
+                                    Remember me
+                                </Label>
+                            </FormGroup>
+                            <Button type='submit' value="submit" color='primary'> Login </Button>
+                        </Form>
+                    </ModalBody>
+                </Modal>
             </>
         );
     }
