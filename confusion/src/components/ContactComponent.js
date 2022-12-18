@@ -37,7 +37,7 @@ class Contact extends Component {
                         </div>
                 </div>
                 <div className="row row-content d-flex justify-content-center">
-                    <div className="col-12">
+                    <div className="col-12 d-flex justify-content-center">
                         <h3>Location Information</h3>
                     </div>
                     <div className="col-12 col-sm-4 offset-sm-1">
@@ -63,12 +63,12 @@ class Contact extends Component {
                     </div>
                 </div>
                 <div className='row row-content d-flex justify-content-center'>
-                    <div className='col-12 d-flex justify-content-center'>
+                    <div className='col-12 mb-2 d-flex justify-content-center'>
                         <h3> Send us Your Feedback</h3>
                     </div>
                     <div className='col-12 col-md-9'>
                         <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
-                            <Row className='form-group'>
+                            <Row className='form-group mb-2'>
                                 <Label htmlFor="firstname" md={2}> First Name </Label>
                                 <Col md={10}>
                                     <Control.text model=".firstname" id="firstname" name="firstname"
@@ -86,7 +86,7 @@ class Contact extends Component {
                                 </Col>
                             </Row>
 
-                            <Row className='form-group'>
+                            <Row className='form-group mb-2'>
                                 <Label htmlFor="lastname" md={2}> Last Name </Label>
                                 <Col md={10}>
                                     <Control.text model='.lastname' id="lastname" name="lastname"
@@ -105,7 +105,7 @@ class Contact extends Component {
                                 </Col>
                             </Row>
 
-                            <Row className='form-group'>
+                            <Row className='form-group mb-2'>
                                 <Label htmlFor="telnum" md={2}> Contact Tel. </Label>
                                 <Col md={10}>
                                     <Control.text model='.telnum' id="telnum" name="telnum"
@@ -126,7 +126,7 @@ class Contact extends Component {
                                 </Col>
                             </Row>
 
-                            <Row className='form-group'>
+                            <Row className='form-group mb-2'>
                                 <Label htmlFor="email" md={2}> Email </Label>
                                 <Col md={10}>
                                     <Control.text model=".email" id="email" name="email"
@@ -144,7 +144,7 @@ class Contact extends Component {
                                 </Col>
                             </Row>
 
-                            <Row className='form-group'>
+                            <Row className='form-group mb-2'>
                                 <Col md={{size: 6, offset: 2}}>
                                     <div className='form-check'>
                                         <Label check>
@@ -164,7 +164,7 @@ class Contact extends Component {
                                 </Col>
                             </Row>
 
-                            <Row className='form-group'>
+                            <Row className='form-group mb-2'>
                                 <Label htmlFor='message' md={2}> Your Feedback </Label>
                                 <Col md={10}>
                                     <Control.textarea model='.message' id='message' name='message'

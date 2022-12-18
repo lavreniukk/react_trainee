@@ -6,7 +6,8 @@ function RenderLeader({leader}) {
     return (
         <Media tag="ul" className='row'>
             <Media left middle className='col-3'>
-                <Media object src={leader.image} alt={leader.name}/>
+                <Media object src={leader.image} alt={leader.name}
+                height='auto' width='100%'/>
             </Media>
             <Media body className='ml-5 col-9'>
                 <Media heading>
