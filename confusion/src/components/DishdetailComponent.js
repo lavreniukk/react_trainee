@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import {Button, Modal, Label, Col, Row, ModalHeader, ModalBody} from 'reactstrap';
 import { LocalForm, Control, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
 
 const required = (value) => value && value.length;
 const minLength = (length) => (value) => (value) && (value.length >= length); 
@@ -107,7 +108,7 @@ function RenderDish({selectedDish}) {
     if (selectedDish != null) {
         return(
             <Card>
-                <CardImg object src={selectedDish.image} alt={selectedDish.name}/>
+                <CardImg object src={baseUrl + selectedDish.image} alt={selectedDish.name}/>
                 <CardBody>
                     <CardTitle tag="h4"> {selectedDish.name} </CardTitle>
                     <CardText>
