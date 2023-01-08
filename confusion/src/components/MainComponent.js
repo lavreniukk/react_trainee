@@ -70,8 +70,8 @@ class Main extends Component {
       return (
         <>
           <Header />
-          <TransitionGroup>
-            <CSSTransition key={this.props.location.key} classNames="page" timeout={100}>
+          {/* <TransitionGroup>
+            <CSSTransition key={this.props.location.key} classNames="page" timeout={100}> */}
               <Switch location={this.props.location}>
                   <Route path='/home' component={HomePage} />
                   <Route exact path='/aboutus' component={() => <About leaders={this.props.leaders} />} />
@@ -80,8 +80,8 @@ class Main extends Component {
                   <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
                   <Redirect to="/home" />
               </Switch>
-            </CSSTransition>
-          </TransitionGroup>
+            {/* </CSSTransition>
+          </TransitionGroup> */}
           <Footer />
         </>
       );

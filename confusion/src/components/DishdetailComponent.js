@@ -5,6 +5,7 @@ import {Button, Modal, Label, Col, Row, ModalHeader, ModalBody} from 'reactstrap
 import { LocalForm, Control, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 const required = (value) => value && value.length;
 const minLength = (length) => (value) => (value) && (value.length >= length); 
@@ -107,15 +108,22 @@ class CommentForm extends Component {
 function RenderDish({selectedDish}) {
     if (selectedDish != null) {
         return(
-            <Card>
-                <CardImg object src={baseUrl + selectedDish.image} alt={selectedDish.name}/>
-                <CardBody>
-                    <CardTitle tag="h4"> {selectedDish.name} </CardTitle>
-                    <CardText>
-                        {selectedDish.description}
-                    </CardText>
-                </CardBody>
-            </Card> 
+            <FadeTransform
+                in
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
+                    <Card>
+                        <CardImg object src={baseUrl + selectedDish.image} alt={selectedDish.name}/>
+                        <CardBody>
+                            <CardTitle tag="h4"> {selectedDish.name} </CardTitle>
+                            <CardText>
+                                {selectedDish.description}
+                            </CardText>
+                        </CardBody>
+                    </Card> 
+            </FadeTransform>
+            
         );
     }
     else {
@@ -129,10 +137,12 @@ function RenderComments({commentsArr, postComment, dishId}) {
     if (commentsArr != null) {
         var comms = commentsArr.map((comm) => {
             return(
-                <li key={comm.id}>
+                <Fade in>
+                    <li key={comm.id}>
                     <p> {comm.comment} </p>
                     <p> -- {comm.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day:'2-digit'}).format(new Date(Date.parse(comm.date)))}</p>
                 </li>
+                </Fade>
             );
         });
 
@@ -140,7 +150,9 @@ function RenderComments({commentsArr, postComment, dishId}) {
             <div>
                 <h4> Comments </h4>
                 <ul class="list-unstyled">
-                    {comms}
+                    <Stagger in>
+                        {comms}
+                    </Stagger>
                 </ul>
                 <CommentForm dishId={dishId} postComment={postComment}/>
             </div>
