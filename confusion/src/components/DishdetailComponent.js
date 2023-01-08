@@ -123,7 +123,6 @@ function RenderDish({selectedDish}) {
                         </CardBody>
                     </Card> 
             </FadeTransform>
-            
         );
     }
     else {
